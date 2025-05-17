@@ -32,15 +32,15 @@ router.get("/:id", async (req, res) => {
 // update
 router.put("/:id", async (req, res) => {
   try {
-    const { name, danger_level, description, kill_by } = req.body
+    const { name, dangerLevel, description, killBy } = req.body
 
     await db
       .update(monstersTable)
       .set({
         name,
-        danger_level,
+        dangerLevel,
         description,
-        kill_by
+        killBy
       })
       .where(eq(monstersTable.id, req.params.id))
     res.json({ message: "更新怪物成功" })

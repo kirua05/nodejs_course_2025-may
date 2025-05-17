@@ -1,6 +1,6 @@
 {
-  "id": "99e6b56e-6ca0-429e-be01-e593ee2d18ea",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "d26ecaf9-edf6-4d16-a9c3-08b9aa784d11",
+  "prevId": "99e6b56e-6ca0-429e-be01-e593ee2d18ea",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -81,23 +81,23 @@
           "primaryKey": false,
           "notNull": true
         },
-        "description": {
-          "name": "description",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
         "kill_by": {
           "name": "kill_by",
           "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
           "primaryKey": false,
           "notNull": false
         }
       },
       "indexes": {},
       "foreignKeys": {
-        "monsters_kill_by_heroes_id_fk": {
-          "name": "monsters_kill_by_heroes_id_fk",
+        "fk_kill_by": {
+          "name": "fk_kill_by",
           "tableFrom": "monsters",
           "tableTo": "heroes",
           "columnsFrom": [
@@ -106,8 +106,8 @@
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onDelete": "set null",
+          "onUpdate": "restrict"
         }
       },
       "compositePrimaryKeys": {},

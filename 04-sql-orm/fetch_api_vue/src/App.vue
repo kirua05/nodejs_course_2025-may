@@ -99,24 +99,26 @@ const clearMessage = () => {
 
 onMounted(async () => {
   await Promise.all([fetchHeroes(), fetchMonsters()])
+  // await fetchHeroes()
+  // await fetchMonsters()
 })
 </script>
 
 <template>
-  <div class="container mx-auto p-4">
+  <div class="container p-4 mx-auto">
     <!-- 訊息提示 -->
     <MessageAlert v-if="error" :message="error" type="error" @close="clearMessage" />
     <MessageAlert v-if="message" :message="message" type="success" @close="clearMessage" />
 
     <!-- 英雄列表 -->
     <div class="mb-8">
-      <h2 class="text-2xl font-bold mb-4">英雄列表</h2>
+      <h2 class="mb-4 text-2xl font-bold">英雄列表</h2>
       <CardList :items="heroes" type="hero" @edit="item => handleEdit(item, 'hero')" @delete="handleDelete" />
     </div>
 
     <!-- 怪物列表 -->
     <div class="mb-8">
-      <h2 class="text-2xl font-bold mb-4">怪物列表</h2>
+      <h2 class="mb-4 text-2xl font-bold">怪物列表</h2>
       <CardList :items="monsters" type="monster" @edit="item => handleEdit(item, 'monster')" />
     </div>
 
